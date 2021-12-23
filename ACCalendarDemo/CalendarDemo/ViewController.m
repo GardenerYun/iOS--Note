@@ -12,10 +12,7 @@
 #import "NSDate+LunarCalendar.h"
 #import "ACCalendarModel.h"
 
-@interface ViewController () {
-
-    ACCalendarViewController *_vc;
-}
+@interface ViewController ()
 
 @end
 
@@ -25,20 +22,18 @@
     [super viewDidLoad];
     
 
-    
+    self.title = @"日历";
 }
 
 
 - (IBAction)_calendarAction:(id)sender {
     
-    if (_vc == nil) {
-        _vc = [[ACCalendarViewController alloc] init];
-        _vc.block = ^(ACCalendarModel *model){
-            NSLog(@"%@",model.dateString);
-        };
-    }
-    
-    [self.navigationController pushViewController:_vc animated:YES];
+    ACCalendarViewController *vc = [[ACCalendarViewController alloc] init];
+    vc.block = ^(ACCalendarModel *model){
+        NSLog(@"%@",model.dateString);
+    };
+
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
